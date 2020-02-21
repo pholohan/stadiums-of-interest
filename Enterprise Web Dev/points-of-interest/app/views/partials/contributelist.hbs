@@ -1,0 +1,31 @@
+<section class="ui raised segment">
+    <div class="ui grid">
+        <aside class="sixteen wide column">
+            <img src="images/banner.jpg" class="ui middle aligned large image">
+        </aside>
+        <article class="sixteen wide column">
+            {{#each stadiums}}
+            <table class="ui fixed celled table">
+                    <thead>
+                        <tr>
+                            <th>Stadium Name</th>
+                            <th>Stadium Capacity</th>
+                            <th>County</th>
+                            <th>Province</th>
+                            <th>Contributer</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td> {{name}} </td>
+                            <td> {{capacity}} </td>
+                            <td> {{county}} </td>
+                            <td> {{province}} </td>
+                            <td> {{contributer.firstName}} {{contributer.lastName}} </td>
+                        </tr>
+                    </tbody>
+            </table>
+            {{/each}}
+        </article>
+    </div>
+</section>
