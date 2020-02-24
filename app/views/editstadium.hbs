@@ -1,0 +1,35 @@
+{{> mainmenu _id="settings" }}
+
+<section class="ui raised segment">
+    <div class="ui grid">
+        <div class="ui ten wide column">
+            <div class="ui stacked fluid form segment">
+                <form action="/editstadium/{{stadium._id}}" method="POST">
+                    <h3 class="ui header">Edit Stadium</h3>
+                    <div class="two fields">
+                        <div class="field">
+                            <label>Stadium Name</label>
+                            <input value="{{stadium.name}}" type="text" name="name">
+                        </div>
+                        <div class="field">
+                            <label>Capacity</label>
+                            <input value="{{stadium.capacity}}" type="text" name="capacity">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label>County</label>
+                        <input value="{{stadium.county}}" type="text" name="county">
+                    </div>
+                    <div class="field">
+                        <label>Province</label>
+                        <input value="{{stadium.province}}" type="text" name="province">
+                    </div>
+                    <button class="ui blue submit button">Save</button>
+                </form>
+            </div>
+        </div>
+        <aside class="ui five wide column">
+            <img src="images/gaa.png" class="ui medium image">
+        </aside>
+    </div>
+</section>
