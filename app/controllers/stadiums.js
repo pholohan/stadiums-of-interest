@@ -80,6 +80,11 @@ const Stadiums = {
             }
         }
     },
+    uploadstadiumimages: {
+        handler: function(request, h) {
+            return h.view('stadiumupload', { title: 'Upload A Stadium Image' });
+        }
+    },
 
 };
 

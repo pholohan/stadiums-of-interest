@@ -23,7 +23,7 @@ const Gallery = {
                 const file = request.payload.imagefile;
                 if (Object.keys(file).length > 0) {
                     await ImageStore.uploadImage(request.payload.imagefile);
-                    return h.redirect('/');
+                    return h.redirect('/report');
                 }
                 return h.view('gallery', {
                     title: 'Cloudinary Gallery',
@@ -37,7 +37,7 @@ const Gallery = {
             multipart: true,
             output: 'data',
             maxBytes: 209715200,
-            parse: true
+            parse: true,
         }
     },
 
