@@ -1,56 +1,34 @@
 'use strict';
 
-const ImageStore = require('../utils/image-store');
+const cloudinary = require('cloudinary');
+const fs = require('fs');
+const util = require('util');
+const writeFile = util.promisify(fs.writeFile);
 
-const Gallery = {
-    index: {
-        handler: async function(request, h) {
-            try {
-                const allImages = await ImageStore.getAllImages();
-                return h.view('gallery', {
-                    title: 'Cloudinary Gallery',
-                    images: allImages
-                });
-            } catch (err) {
-                console.log(err);
-            }
-        }
+const ImageStore = {
+    configure: function() {
+        const credentials = {
+            cloud_name: process.env.name,
+            api_key: process.env.key,
+            api_secret: process.env.secret
+        };
+        cloudinary.config(credentials);
     },
 
-    uploadFile: {
-        handler: async function(request, h) {
-            try {
-                const file = request.payload.imagefile;
-                if (Object.keys(file).length > 0) {
-                    await ImageStore.uploadImage(request.payload.imagefile);
-                    return h.redirect('/');
-                }
-                return h.view('gallery', {
-                    title: 'Cloudinary Gallery',
-                    error: 'No file selected'
-                });
-            } catch (err) {
-                console.log(err);
-            }
-        },
-        payload: {
-            multipart: true,
-            output: 'data',
-            maxBytes: 209715200,
-            parse: true
-        }
+    getAllImages: async function() {
+        const result = await cloudinary.v2.api.resources();
+        return result.resources;
     },
 
-    deleteImage: {
-        handler: async function(request, h) {
-            try {
-                await ImageStore.deleteImage(request.params.id);
-                return h.redirect('/');
-            } catch (err) {
-                console.log(err);
-            }
-        }
-    }
+    uploadImage: async function(imagefile) {
+        await writeFile('./public/temp.img', imagefile);
+        await cloudinary.uploader.upload('./public/temp.img');
+    },
+
+    deleteImage: async function(id) {
+        await cloudinary.v2.uploader.destroy(id, {});
+    },
+
 };
 
-module.exports = Gallery;
+module.exports = ImageStore;
