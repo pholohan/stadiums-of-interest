@@ -1,6 +1,7 @@
 'use strict';
 
 const ImageStore = require('../utils/image-store');
+const Stadium = require('../models/stadium');
 
 const Gallery = {
     index: {
@@ -20,9 +21,11 @@ const Gallery = {
     uploadFile: {
         handler: async function(request, h) {
             try {
+                const id = request.params.id;
+                const imagename = './public/' + id;
                 const file = request.payload.imagefile;
                 if (Object.keys(file).length > 0) {
-                    await ImageStore.uploadImage(request.payload.imagefile);
+                    await ImageStore.uploadImage(imagename, request.payload.imagefile);
                     return h.redirect('/report');
                 }
                 return h.view('gallery', {

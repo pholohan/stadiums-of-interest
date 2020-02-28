@@ -81,8 +81,10 @@ const Stadiums = {
         }
     },
     uploadstadiumimages: {
-        handler: function(request, h) {
-            return h.view('stadiumupload', { title: 'Upload A Stadium Image' });
+        handler: async function(request, h) {
+            const id = request.params.id;
+            const stadium = await Stadium.findById(id).lean();
+            return h.view('stadiumupload', { title: 'Upload A Stadium Image',stadium: stadium });
         }
     },
 

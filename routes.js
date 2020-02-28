@@ -15,10 +15,10 @@ module.exports = [
     { method: 'GET', path: '/editstadium/{id}', config: Stadiums.showStadium },
     { method: 'POST', path: '/editstadium/{id}', config: Stadiums.updateStadium },
     { method: 'GET', path: '/deletestadium/{id}', config: Stadiums.deleteStadium },
-    { method: 'POST', path: '/uploadfile', config: Gallery.uploadFile },
+    { method: 'POST', path: '/uploadfile/{id}', config: Gallery.uploadFile },
     { method: 'GET', path: '/home', config: Stadiums.home },
     { method: 'GET', path: '/report', config: Stadiums.report },
-    { method: 'GET', path: '/stadiumupload', config: Stadiums.uploadstadiumimages },
+    { method: 'GET', path: '/stadiumupload/{id}', config: Stadiums.uploadstadiumimages },
 
     {
         method: 'GET',
