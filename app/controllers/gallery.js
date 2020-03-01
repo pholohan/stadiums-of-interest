@@ -53,7 +53,21 @@ const Gallery = {
                 console.log(err);
             }
         }
-    }
+    },
+
+    getsingleimage: {
+        handler: async function(request, h) {
+            try {
+                const allImages = await ImageStore.getAllImages();
+                return h.view('gallery', {
+                    title: 'Cloudinary Gallery',
+                    images: allImages
+                });
+            } catch (err) {
+                console.log(err);
+            }
+        }
+    },
 };
 
 module.exports = Gallery;

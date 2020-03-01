@@ -2,10 +2,11 @@
 
 const Stadium = require('../models/stadium');
 const User = require('../models/user');
+const ImageStore = require('../utils/image-store');
 
 const Stadiums = {
     home: {
-        handler: function(request, h) {
+        handler: async function(request, h) {
             return h.view('home', { title: 'Add A Stadium' });
         }
     },
