@@ -1,5 +1,9 @@
 const Accounts = require('./app/controllers/accounts');
 const Stadiums = require('./app/controllers/stadiums');
+<<<<<<< HEAD
+=======
+
+>>>>>>> d78e12792047d38132505f594ba61710c2d35c7e
 
 module.exports = [
     { method: 'GET', path: '/', config: Accounts.index },

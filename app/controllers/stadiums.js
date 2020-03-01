@@ -89,6 +89,10 @@ const Stadiums = {
             return h.view('stadiumupload', { title: 'Upload A Stadium Image',stadium: stadium });
         }
     },
+<<<<<<< HEAD
+=======
+
+>>>>>>> d78e12792047d38132505f594ba61710c2d35c7e
     uploadFile: {
         handler: async function(request, h) {
             try {
@@ -103,8 +107,13 @@ const Stadiums = {
                     await Stadium.findOneAndUpdate({_id: id}, {stadiumURL: test});
                     return h.redirect('/report');
                 }
+<<<<<<< HEAD
                 return h.view('gallery', {
                     title: 'Cloudinary Gallery',
+=======
+                return h.view('main', {
+                    title: 'Points of Interest',
+>>>>>>> d78e12792047d38132505f594ba61710c2d35c7e
                     error: 'No file selected'
                 });
             } catch (err) {
