@@ -2,6 +2,7 @@
 
 const ImageStore = require('../utils/image-store');
 const Stadium = require('../models/stadium');
+const User = require('../models/user');
 
 const Gallery = {
     index: {
@@ -24,8 +25,12 @@ const Gallery = {
                 const id = request.params.id;
                 const imagename = './public/' + id;
                 const file = request.payload.imagefile;
+                const stadium = await Stadium.findById(id).lean();
                 if (Object.keys(file).length > 0) {
-                    await ImageStore.uploadImage(imagename, request.payload.imagefile);
+                    const test = await ImageStore.uploadImage(imagename, request.payload.imagefile);
+                    console.log(test);
+                    stadium.stadiumURL = test;
+                    await Stadium.findOneAndUpdate({_id: id}, {stadiumURL: test});
                     return h.redirect('/report');
                 }
                 return h.view('gallery', {

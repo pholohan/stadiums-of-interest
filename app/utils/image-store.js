@@ -22,7 +22,15 @@ const ImageStore = {
 
     uploadImage: async function(imagename,imagefile) {
         await writeFile(imagename, imagefile);
-        await cloudinary.v2.uploader.upload(imagename,{use_filename: true, unique_filename: false});
+        var stadiumURL = '';
+        await cloudinary.v2.uploader.upload(imagename,{use_filename: true, unique_filename: false}, function(error,result) {
+            if(error){
+                console.log(error, result);
+                return;
+            }
+            stadiumURL = result.url;
+            console.log(stadiumURL)});
+        return stadiumURL;
     },
 
     deleteImage: async function(id) {

@@ -32,6 +32,7 @@ const Stadiums = {
                 county: data.county,
                 capacity: data.capacity,
                 province: data.province,
+                stadiumURL: '',
                 contributer: user._id
             })
             await newStadium.save();
