@@ -1,6 +1,6 @@
 const Accounts = require('./app/controllers/accounts');
 const Stadiums = require('./app/controllers/stadiums');
-const Gallery = require('./app/controllers/gallery');
+
 
 module.exports = [
     { method: 'GET', path: '/', config: Accounts.index },
@@ -15,7 +15,7 @@ module.exports = [
     { method: 'GET', path: '/editstadium/{id}', config: Stadiums.showStadium },
     { method: 'POST', path: '/editstadium/{id}', config: Stadiums.updateStadium },
     { method: 'GET', path: '/deletestadium/{id}', config: Stadiums.deleteStadium },
-    { method: 'POST', path: '/uploadfile/{id}', config: Gallery.uploadFile },
+    { method: 'POST', path: '/uploadfile/{id}', config: Stadiums.uploadFile },
     { method: 'GET', path: '/home', config: Stadiums.home },
     { method: 'GET', path: '/report', config: Stadiums.report },
     { method: 'GET', path: '/stadiumupload/{id}', config: Stadiums.uploadstadiumimages },
