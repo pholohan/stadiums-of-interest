@@ -2,11 +2,14 @@
 
 const User = require('../models/user');
 const Boom = require('@hapi/boom');
+const Joi = require('@hapi/joi');
+
+const ImageStore = require('../utils/image-store');
 
 const Accounts = {
     index: {
         auth: false,
-        handler: function(request, h) {
+        handler: async function(request, h) {
             return h.view('main', { title: 'Welcome to GAA Stadiums' });
         }
     },

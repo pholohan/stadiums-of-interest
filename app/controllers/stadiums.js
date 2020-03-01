@@ -2,10 +2,11 @@
 
 const Stadium = require('../models/stadium');
 const User = require('../models/user');
+const ImageStore = require('../utils/image-store');
 
 const Stadiums = {
     home: {
-        handler: function(request, h) {
+        handler: async function(request, h) {
             return h.view('home', { title: 'Add A Stadium' });
         }
     },
@@ -31,6 +32,7 @@ const Stadiums = {
                 county: data.county,
                 capacity: data.capacity,
                 province: data.province,
+                stadiumURL: '',
                 contributer: user._id
             })
             await newStadium.save();
@@ -78,6 +80,13 @@ const Stadiums = {
             }catch(err){
                 return h.view('main', { errors: [{ message: err.message }] });
             }
+        }
+    },
+    uploadstadiumimages: {
+        handler: async function(request, h) {
+            const id = request.params.id;
+            const stadium = await Stadium.findById(id).lean();
+            return h.view('stadiumupload', { title: 'Upload A Stadium Image',stadium: stadium });
         }
     },
 

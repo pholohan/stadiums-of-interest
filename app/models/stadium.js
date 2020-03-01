@@ -8,6 +8,7 @@ const stadiumSchema = new Schema({
     county: String,
     capacity: Number,
     province: String,
+    stadiumURL: String,
     contributer: {
         type: Schema.Types.ObjectId,
         ref: 'User'

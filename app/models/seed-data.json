@@ -1,0 +1,50 @@
+{
+  "users": {
+    "_model": "User",
+    "homer": {
+      "firstName": "Homer",
+      "lastName": "Simpson",
+      "email": "homer@simpson.com",
+      "password": "secret"
+    },
+    "marge": {
+      "firstName": "Marge",
+      "lastName": "Simpson",
+      "email": "marge@simpson.com",
+      "password": "secret"
+    },
+    "bart": {
+      "firstName": "Bart",
+      "lastName": "Simpson",
+      "email": "bart@simpson.com",
+      "password": "secret"
+    }
+  },
+  "stadiums": {
+    "_model": "Stadium",
+    "one": {
+      "name": "Croke Park",
+      "county": "Dublin",
+      "capacity": 85000,
+      "province": "Leinster",
+      "stadiumURL": "https://res.cloudinary.com/dbywou1bu/image/upload/v1582974708/5e4f0587b0e30f1f2c9a04a0.jpg",
+      "contributer": "->users.homer"
+    },
+    "two": {
+      "name": "Walsh Park",
+      "county": "Waterford",
+      "capacity": 10000,
+      "province": "Munster",
+      "stadiumURL": "https://res.cloudinary.com/dbywou1bu/image/upload/v1582974925/5e5a47768203fd1d54d96c0e.jpg",
+      "contributer": "->users.homer"
+    },
+    "three": {
+      "name": "Semple Stadium",
+      "county": "Tipperary",
+      "capacity": 50000,
+      "province": "Munster",
+      "stadiumURL": "https://res.cloudinary.com/dbywou1bu/image/upload/v1582995761/5e5a48b90d78020c38c2293e.jpg",
+      "contributer": "->users.homer"
+    }
+  }
+}
