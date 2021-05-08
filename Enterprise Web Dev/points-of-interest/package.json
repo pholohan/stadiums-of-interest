@@ -15,7 +15,7 @@
     "@hapi/inert": "^6.0.1",
     "@hapi/vision": "^6.0.0",
     "dotenv": "^8.2.0",
-    "handlebars": "^4.7.3",
+    "handlebars": "^4.7.7",
     "mongoose": "^5.9.1"
   },
   "devDependencies": {
